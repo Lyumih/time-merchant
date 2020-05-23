@@ -13,22 +13,24 @@ export default function HourCost({ cost, setCost }: HourCostProps) {
           <Form>
             <Form.Group controlId="formBasicRangeCustom">
               <Form.Label>
-                <h3>Сколько стоит ваш час?</h3>
+                <h3>Сколько стоит ваш час? {cost}₽</h3>
               </Form.Label>
-
               <Form.Control
-                type="range"
-                custom
+                type="number"
                 min="0"
-                max="10000"
                 step="20"
                 value={cost}
                 onChange={(e) => setCost(e.target.value)}
               />
-
-              <Form.Label>
-                <h2>{cost}₽</h2>
-              </Form.Label>
+              <Form.Control
+                type="range"
+                custom
+                min="0"
+                max="2000"
+                step="20"
+                value={cost}
+                onChange={(e) => setCost(e.target.value)}
+              />
             </Form.Group>
           </Form>
         </Col>

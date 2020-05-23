@@ -1,4 +1,4 @@
-import { Table } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
 import { ServiceList } from "../../constants";
 
 type ServicesTableProps = {
@@ -13,7 +13,9 @@ export default function ServicesTable({
     <Table striped bordered hover responsive>
       <thead>
         <tr>
-          <th colSpan={5} className='text-center'>Ваши Активы</th>
+          <th colSpan={5} className="text-center">
+            Ваши Активы
+          </th>
         </tr>
         <tr>
           <th>#</th>

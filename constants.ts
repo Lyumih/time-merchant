@@ -1,7 +1,7 @@
 
 export const SITE_TITLE = "Продавец Времени"
 
-export const INITITAL_COST = 300
+export const INITITAL_COST = 500
 
 export type ServiceList =  {
     id: number,
