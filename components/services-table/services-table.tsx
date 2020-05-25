@@ -4,16 +4,23 @@ import { ServiceList } from "../../constants";
 type ServicesTableProps = {
   cost: number;
   serviceList: ServiceList[];
-}
+  setServiceList: (e: ServiceList[]) => void;
+};
 export default function ServicesTable({
   cost,
   serviceList,
+  setServiceList,
 }: ServicesTableProps) {
+  function removeServiceHandler(e) {
+    let targetId = e.target.dataset.serviceId;
+    setServiceList(serviceList.filter(({ id }) => id != targetId));
+  }
+
   return (
     <Table striped bordered hover responsive>
       <thead>
         <tr>
-          <th colSpan={5} className="text-center">
+          <th colSpan={6} className="text-center">
             Ваши Активы
           </th>
         </tr>
@@ -23,6 +30,7 @@ export default function ServicesTable({
           <th>Время, час</th>
           <th>Стоимость, ₽</th>
           <th>+ Zero Day</th>
+          <th>Удалить</th>
         </tr>
       </thead>
       <tbody>
@@ -32,6 +40,7 @@ export default function ServicesTable({
           <td>1</td>
           <td>0</td>
           <td>{cost}</td>
+          <td></td>
         </tr>
         {serviceList.map(({ id, name, time }, index) => {
           return (
@@ -41,6 +50,9 @@ export default function ServicesTable({
               <td>{time}</td>
               <td>{time * cost}</td>
               <td>{time * cost + +cost}</td>
+              <td data-service-id={id} onClick={removeServiceHandler}>
+                <span>-</span>
+              </td>
             </tr>
           );
         })}

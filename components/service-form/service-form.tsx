@@ -24,15 +24,13 @@ export default function ServiceForm({
     <Row>
       <Col>
         <Form onSubmit={addServiceHandler}>
-          <Button variant="primary" type="submit">
-            Добавить услугу
-          </Button>
           <Form.Group>
             <Form.Label>Название услуги</Form.Label>
             <Form.Control
               type="text"
               name="label"
               placeholder="Название услуги ..."
+              required
             />
           </Form.Group>
           <Form.Group>
@@ -43,8 +41,13 @@ export default function ServiceForm({
               placeholder="Продолжительность ..."
               min="0.25"
               step="0.25"
+              required
             />
           </Form.Group>
+
+          <Button variant="primary" type="submit">
+            Добавить услугу
+          </Button>
         </Form>
       </Col>
     </Row>

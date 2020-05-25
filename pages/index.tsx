@@ -15,7 +15,11 @@ export default function Home() {
     <Layout>
       <Container>
         <HourCost cost={cost} setCost={setCost} />+
-        <ServicesTable cost={cost} serviceList={serviceList} />
+        <ServicesTable
+          cost={cost}
+          serviceList={serviceList}
+          setServiceList={setServiceList}
+        />
         <ServiceForm
           serviceList={serviceList}
           setServiceList={setServiceList}
