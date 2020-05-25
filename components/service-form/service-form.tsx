@@ -17,7 +17,6 @@ export default function ServiceForm({
       name: e.target.label.value,
       time: e.target.time.value,
     };
-    console.log(newServiceList);
     setServiceList([...serviceList, newServiceList]);
   }
   return (
