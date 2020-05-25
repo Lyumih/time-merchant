@@ -1,19 +1,50 @@
 import { Col, Row, Form, Button } from "react-bootstrap";
+import { ServiceList } from "../../constants";
 
-export default function ServiceForm() {
+type ServiceFormProps = {
+  serviceList: ServiceList[];
+  setServiceList: (e) => void;
+};
+
+export default function ServiceForm({
+  serviceList,
+  setServiceList,
+}: ServiceFormProps) {
+  function addServiceHandler(e): void {
+    e.preventDefault();
+    let newServiceList: ServiceList = {
+      id: Date.now(),
+      name: e.target.label.value,
+      time: e.target.time.value,
+    };
+    console.log(newServiceList);
+    setServiceList([...serviceList, newServiceList]);
+  }
   return (
     <Row>
       <Col>
-        <Form>
+        <Form onSubmit={addServiceHandler}>
+          <Button variant="primary" type="submit">
+            Добавить услугу
+          </Button>
           <Form.Group>
-            <Form.Label> Добавить услугу</Form.Label>
-            <Form.Control type="text" placeholder="Название услуги ..." />
+            <Form.Label>Название услуги</Form.Label>
+            <Form.Control
+              type="text"
+              name="label"
+              placeholder="Название услуги ..."
+            />
           </Form.Group>
           <Form.Group>
             <Form.Label>Время</Form.Label>
-            <Form.Control type="number" placeholder="Продолжительность ..." min="0.25" step="0.25" />
+            <Form.Control
+              type="number"
+              name="time"
+              placeholder="Продолжительность ..."
+              min="0.25"
+              step="0.25"
+            />
           </Form.Group>
-          <Button variant="primary" type="button">Добавить</Button>
         </Form>
       </Col>
     </Row>
